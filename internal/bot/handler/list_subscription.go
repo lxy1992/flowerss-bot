@@ -96,7 +96,7 @@ func (l *ListSubscription) listChannelSubscription(ctx tb.Context, channelName s
 			err = ctx.Send(rspMessage, &tb.SendOptions{DisableWebPagePreview: true, ParseMode: tb.ModeMarkdown})
 			rspMessage = fmt.Sprintf("频道 [%s](https://t.me/%s) 订阅列表[%d-%d]：\n", channelChat.Title, channelChat.Username, i+1, i+MaxSubsSizePerPage)
 		}
-		rspMessage = rspMessage + fmt.Sprintf("[[%d]] [%s](%s)\n", ss.Sub.ID, ss.Src.Title, ss.Src.Link)
+		rspMessage = rspMessage + fmt.Sprintf("[[%d]] [%s](%s)\n", i, ss.Src.Title, ss.Src.Link)
 	}
 	return ctx.Send(rspMessage, &tb.SendOptions{DisableWebPagePreview: true, ParseMode: tb.ModeMarkdown})
 }
